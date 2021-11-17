@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,500;0,600;0,700;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="resources/css/styles.css" />
+    <meta name="viewport" c:qontent="width=device-width, initial-scale=1.0" />
+    <title>New document</title>
+  </head>
+  <body>
+    <div>This is another div</div>
+    <p>Hello world</p>
+    <div></div>
+    <!-- this is the navbar that should go the left -->
+    <nav id="navbar">
+      <header>BlackJack Game Documentation</header>
+      <ul>
+        <ul>
+          <li>que fue mano</li>
+        </ul>
+        <li><a class="nav-link" href="#Introduction">Introduction</a></li>
+        <li>
+          <a class="nav-link" href="#Cards_dictionary">Cards Dictionary</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Display_Functions">Display Functions</a>
+        </li>
+        <li><a class="nav-link" href="#Bet_resolution">Bet resolution</a></li>
+        <li><a class="nav-link" href="#Betting">Betting</a></li>
+        <li><a class="nav-link" href="#Get_a_Card">Get a Card</a></li>
+        <li><a class="nav-link" href="#"></a></li>
+      </ul>
+    </nav>
+    <!-- this is the content of the page divided in sections -->
+    <!-- the page MUST contain at least on media query -->
+    <main id="main-doc">
+      <section class="main-section" id="Introduction">
+        <header>Introduction</header>
+        <div>
+          <p>
+            This is a game wrote in python, a version of the famous game, own
+            casinos with one or more decks of 52 cards English without
+            wildcards, which consists of adding a value as close to 21 without
+            going over. In a casino each player at the table plays only against
+            the dealer , trying to get a better play than this. The dealer is
+            bound by fixed rules that prevent him from making decisions about
+            the game. For example, he is forced to ask for a letter whenever his
+            score adds up to 16 or less, and forced to stand if he adds up to 17
+            or more.
+          </p>
+          <ul>
+            <li>
+              <b>HIT: </b>is to ask for another card. To 'Stand' is to hold your
+              total and end your turn. If you go over 21 you bust, and the
+              dealer wins regardless of the dealer's hand. If you are dealt 21
+              from the start (Ace & 10), you got a blackjack.
+            </li>
+            <li>
+              <b>DOUBLE: </b>placing an additional bet to the original, the
+              dealer serves the player a single card on the two initials. Every
+              casino has rules for this play; Some always allow doubling,
+              whatever the first two cards are, others only allow doubling if
+              the first two cards add up to 9, 10 or 11.
+            </li>
+            <li>
+              <b>STAND: </b>What’s also important is that you know the
+              difference between ‘soft’ and ’hard’ hands in blackjack. Hands
+              that contain an Ace, which counts as 1 or 11, are called soft
+              hands, while hands made up of the other cards are called hard
+              hands. Your decision to stand will also be based on which group
+              your hand total falls into.
+            </li>
+          </ul>
+          <p>
+            You can also make use of other blackjack strategies to win, and
+            calculators to help you check probabilities. However, remember that
+            certain strategies to play blackjack such as card counting are
+            frowned upon and can have you banned at a casino. This technique
+            also does not work online as cards are shuffled on every round using
+            an automated shoe.
+          </p>
+        </div>
+      </section>
+      <section class="main-section" id="Cards_dictionary">
+        <header>Cards dictionary</header>
+        <div>
+          <p>
+            Blackjack is played with a conventional deck of 52 playing cards and
+            suits don’t matter.
+          </p>
+          <p>
+            It’s also important to note, the other players’ hands at the table
+            have nothing to do with winning the game of Blackjack like they do
+            in Poker games. For all practical purposes, it’s just you against
+            the dealer. Unskilled patrons of the game will try to convince you
+            “it’s a team sport” but don’t be fooled.
+          </p>
+          <!-- prettier-ignore -->
+          <code
+            >def formatBank(bank):
+              if len(str(bank)) == 3:
+                  bankAdjusted = " " + str(bank)
+              elif len(str(bank)) == 2:
+                  bankAdjusted = "  " + str(bank)
+              elif len(str(bank)) == 1:
+                  bankAdjusted = "   " + str(bank)
+              else:
+                  bankAdjusted = str(bank)
+              return bankAdjusted
+          </code>
+          <p>
+            Blackjack is usually played on a semicircular table that can
+            accommodate varying numbers of players. The most common tables
+            accommodate 7 players (or seven “spots”) but we’ve seen tables that
+            only allow 5 players and other tables that have 12 spots! The dealer
+            stands behind the table and chip rack and the players sit on the
+            other side.
+          </p>
+        </div>
+      </section>
+      <section class="main-section" id="Display_Functions">
+        <header>Display Functions</header>
+        <div>
+          <p>
+            This is where the rubber meets the road when it comes to beating
+            blackjack. Vegas was built on guys who looked at the wallet-size
+            basic strategy a couple times after they bought it in the gift shop
+            on their last vacation. It takes intentional practice to commit this
+            stuff to memory. If it was easy, we wouldn’t have a website
+            dedicated to helping you learn it.
+          </p>
+          <!-- prettier-ignore -->
+          <code
+          > def displayOnGameTable(bank, bet):
+        moneyDisplayed = actualizeMoney(bank) + bet
+        onGameTable = """
+            .─────────────────────────────────────.
+            |                                     |
+            |       BANK = $ {}                 |
+            |                                     |
+            |       YOUR BET = $ {}             |
+            |                                     |
+            .─────────────────────────────────────.
+        """.format(formatBank(moneyDisplayed), formatBet(-1*bet))
+        print(onGameTable)
+          </code>
+          <p>
+            Once you learn this chart you will have to learn additional
+            blackjack rules and deviations that relate to the specific rules of
+            the games you will be playing. The better you learn basic strategy
+            the easier it will be to transition to the other rules-specific
+            charts.
+          </p>
+        </div>
+      </section>
+      <section class="main-section" id="Bet_resolution">
+        <header>Bet resolution</header>
+        <div>
+          <p>
+            Blackjack games come with many rule variations and different numbers
+            of decks. The most common game of blackjack is dealt out of a 6-deck
+            or 8-deck “shoe” (a plastic, card-dispensing device). Single and
+            double deck games are still alive and well but not all casinos that
+            have blackjack will have single and double deck so the “shoe games”
+            are a little more common. Our example will be the procedure for the
+            most common blackjack game played with 6 decks. Here is the basic
+            overview of a round of blackjack:
+          </p>
+          <!-- prettier-ignore -->
+          <code
+            > def betResolution(initialBank, playerBet, WoL=True or False):
+            if WoL == True:
+                initialBank.append(-1*playerBet)
+            elif WoL == False:
+                initialBank.append(playerBet)
+              </code>
+          <p>
+            In a game where you can only hope to gain a 1% edge over the house,
+            a 99% game isn’t good enough. You need to know these strategy charts
+            backwards and forwards, doing a handstand, in a hurricane, giving
+            your drink order to a waitress, while listening to Count Von Count
+            serenade you on Sesame Street.
+          </p>
+        </div>
+      </section>
+      <section class="main-section" id="Betting">
+        <header>Betting</header>
+        <div>
+          <ul>
+            <li>
+              <b>Main way: </b>The advantage to the casino is reduced by the
+              player's ability to see one of the dealer's cards and make
+              decisions regarding it. Thus a player can stand 16 or less,
+              waiting for the dealer to bust, something the dealer is not
+              allowed to do. You can also double the bet when you think your
+              cards are favorable with respect to the dealer's visible card, or
+              you can unfold the cards when you have two of the same and
+              therefore play several hands against the dealer in a hand that you
+              consider unfavorable for him. With proper playing strategy, the
+              chances of beating the dealer are significantly increased.
+              However, studies show that even if the player always plays in the
+              most favorable way,
+            </li>
+            <li>
+              <b>Second way: </b>In today's blackjack, the casino advantage is
+              that the player calls first, with the ability to bust. In the
+              event of a check, you automatically lose the bet, eliminating the
+              possibility of a tie. Even if the dealer checked too, the player
+              would have previously lost, so the casino would have already
+              cashed the bet.
+            </li>
+          </ul>
+          <!-- prettier-ignore -->
+          <code
+          > def makeABet(initialBank):
+    cv = 0
+    while cv == 0:
+        allIn = actualizeMoney(initialBank)
+        validBets = [allIn, "25", "50", "100", "250", "500"]
+        playerBet = input(
+            "Please enter a valid amount to bet // -ALL IN- -25- -50- -100- -250- -500-\n").upper()
+        if playerBet in validBets:
+            playerBet = int(playerBet)
+            return (-1*playerBet)
+        elif playerBet == "ALL IN":
+            playerBet = allIn
+            return (-1*playerBet)
+          </code>
+          <p>
+            One technique used by some players is card counting. The simplest
+            technique is to add +1 for each low card (2 to 6) that reaches the
+            table, which benefits the player for the following rounds as there
+            is a greater chance of obtaining cards and high scores, or subtract
+            -1 for each Ace or card with a value of 10 that reaches the table,
+            which hurts the player for the following rounds. The middle cards (7
+            to 9) do not add or subtract. When you are on a positive score,
+            there are more chances that the player will get a good play, so you
+            can bet harder. On the other hand, with a negative score the chances
+            of getting a good hand are worse, so the bets should be lower.
+          </p>
+        </div>
+      </section>
+      <section class="main-section" id="Get_a_Card">
+        <header>Get a Card</header>
+        <div>
+          <p>
+            Once you learn this chart you will have to learn additional
+            blackjack rules and deviations that relate to the specific rules of
+            the games you will be playing. The better you learn basic strategy
+            the easier it will be to transition to the other rules-specific
+            charts.
+          </p>
+          <!-- prettier-ignore -->
+          <code
+          > def getACard(cardList, cardValueList):
+    selectedLogo = random.choice(list(clubArt.keys()))
+    selectedCard = random.choice(clubArt[selectedLogo])
+    logo, cardString, cardValue = selectedLogo, selectedCard[0], selectedCard[1]
+    cardTotal = (logo, cardString, cardValue)
+    cardList.append(cardTotal)
+    cardValue = cardTotal[2]
+    if cardTotal[1] == ' A':
+        if getScore(cardValueList) + cardValue > 21:
+            cardValue = 1
+            cardValueList.append(cardValue)
+        else:
+            cardValueList.append(cardTotal[2])
+    else:
+        cardValueList.append(cardTotal[2])
+          </code>
+          <p>
+            If you’re playing at a casino that offers surrender (also known as
+            late surrender or LS), you will only have the option to surrender on
+            the first two cards you’re dealt. You won’t be able to surrender if
+            you’ve already taken a hit card. This is why surrender is the first
+            thing you have to think about when playing your hand. If the answer
+            is NO you can’t or NO you shouldn’t surrender, you then ask
+            yourself….
+          </p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
